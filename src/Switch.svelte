@@ -3,8 +3,8 @@
 
   let color = "#2196F3";
 
-  let checked = $unit === 'imperial' ? true : false
-  $: checked === true ? $unit = 'metric' : $unit = 'imperial'
+  let checked = $unit === 'imperial' ? true : false;
+  $: $unit = checked === true ? 'imperial' : 'metric';
 
 </script>
 

@@ -13,3 +13,26 @@ html {
   --color__accent: #6200ee;
   --color__darkgray: rgba(0, 0, 0, 0.42);
 }
+
+.tooltip{
+  height: 6rem;
+  width: 6rem;
+}
+
+.tooltip ~ .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: .25rem;
+  position: relative;
+  top: -5rem;
+  left: -4.6rem;
+  z-index: 1;
+}
+
+/*
+.tooltip:hover ~ .tooltiptext {
+  visibility: visible;
+} */

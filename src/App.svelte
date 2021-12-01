@@ -1,8 +1,10 @@
 <script>
   import InputForm from "./InputForm.svelte";
   import Switch from './Switch.svelte'
-  import MainDisplay from './MainDisplay.svelte'
+  import Current from './Current.svelte'
   import Time from './Time.svelte'
+  import Hourly from './Hourly.svelte'
+  import Daily from './Daily.svelte'
 	import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
@@ -18,9 +20,11 @@
     <Switch />
   </div>
   <section class='today'>
-    <MainDisplay />
+    <Current />
   </section>
   <Time />
+  <Hourly />
+  <Daily />
 </main>
 {/if}
 

@@ -1,30 +1,19 @@
 <script>
-import { weather } from './stores';
+import { current, getForeignTime } from './stores';
 
-$: sunrise = getForeignTime($weather.timezone/60, new Date($weather.sys.sunrise*1000))
-$: sunset = getForeignTime($weather.timezone/60, new Date($weather.sys.sunset*1000))
-$: time = getForeignTime($weather.timezone/60, new Date())
+let canvas;
 
-function getForeignTime(foreignTZOffsetInMinutes, desiredTime) {
-  let localeTZOffsetInMinutes = (new Date()).getTimezoneOffset();
-  let offsetInMs = 60*1000*(foreignTZOffsetInMinutes+localeTZOffsetInMinutes)
-  let foreignTime = new Date(desiredTime.getTime() + offsetInMs)
-  let formatter = new Intl.DateTimeFormat([], {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: false,
-  });
-  return time = formatter.format(foreignTime);
-}
-
+$: sunrise = getForeignTime($current.timezone/60, new Date($current.sys.sunrise*1000))
+$: sunset = getForeignTime($current.timezone/60, new Date($current.sys.sunset*1000))
+$: foreignTime = getForeignTime($current.timezone/60, new Date())
+$: { canvas && plot(foreignTime) }
 
 // NOTIMPLEMENTED:
 // stretch the daylight hours between the width above the horizontal line
-// plot automatically
 
-export function plot() {
+
+function plot(time) {
   // initialize and clear canvas
-  const canvas = document.querySelector("canvas");
   const ctx = canvas.getContext("2d");
   const width = ctx.canvas.width;
   const height = ctx.canvas.height;
@@ -87,12 +76,7 @@ export function plot() {
 
 </script>
 
-
-<p>
-  {time}
-</p>
-
-<canvas width="500" height="100" on:mount={plot()}></canvas>
-
+<canvas width="500" height="100" bind:this={canvas}></canvas>
+<p>now {foreignTime}</p>
 <p>sunrise {sunrise}</p>
 <p>sunset {sunset}</p>

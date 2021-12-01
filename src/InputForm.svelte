@@ -1,5 +1,5 @@
 <script>
-  import { weather, APPID } from './stores';
+  import { current, hourly, daily, APPID } from './stores';
 
   let city = '';
   $: disabled = (city.length === 0)
@@ -9,13 +9,60 @@
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APPID}`
       let response = await fetch(url)
       if (response.status !== 200) return Promise.resolve('not found')
-      $weather = await response.json();
+      $current = await response.json();
+      getHourlyAndDaily()
     } catch(err) {
       console.log(err)
       return Promise.resolve('failed fetch')
     } finally {
     }
   }
+
+  async function getHourlyAndDaily() {
+    try{
+      let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${$current.coord.lat}&lon=${$current.coord.lon}&exclude=current,minutely,alerts&appid=${APPID}`
+      let response = await fetch(url)
+      if (response.status !== 200) return Promise.resolve('not found')
+      let data = await response.json();
+      formatHourly(data.hourly)
+      formatDaily(data.daily)
+    } catch(err) {
+      console.log(err)
+      return Promise.resolve('failed fetch')
+    } finally {
+    }
+  }
+
+  function formatHourly(data) {
+    let hourlyData = []
+      for (let i = 1; i<25; i++){
+        let hour = {}
+        hour['dt'] = data[i].dt;
+        hour['temp'] = data[i].temp;
+        hour['main'] = data[i].weather[0].main;
+        hour['icon'] = data[i].weather[0].icon;
+        hour['pop'] = data[i].pop;
+        hourlyData.push(hour)
+      }
+      $hourly = hourlyData
+  }
+
+
+  function formatDaily(data) {
+    let dailyData = []
+      for (let i = 1; i<7; i++){
+        let day = {}
+        day['dt'] = data[i].dt;
+        day['temp_min'] = data[i].temp.min;
+        day['temp_max'] = data[i].temp.max;
+        day['main'] = data[i].weather[0].main;
+        day['description'] = data[i].weather[0].description;
+        day['icon'] = data[i].weather[0].icon;
+        dailyData.push(day)
+      }
+      $daily = dailyData
+  }
+
 
   async function handleSubmit() {
     let weather = await getWeather();
