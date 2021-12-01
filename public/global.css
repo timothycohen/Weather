@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Roboto, Arial, sans-serif
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+:root {
+
+  --color__accent: #6200ee;
+  --color__darkgray: rgba(0, 0, 0, 0.42);
+}
