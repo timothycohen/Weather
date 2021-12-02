@@ -39,7 +39,7 @@ export function getForeignTime(foreignTZOffsetInMinutes, desiredTime) {
   let formatter = new Intl.DateTimeFormat([], {
     hour: 'numeric',
     minute: 'numeric',
-    hour12: false,
+    hourCycle: 'h23',
   });
   return formatter.format(foreignTime);
 }

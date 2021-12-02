@@ -6,11 +6,12 @@ let canvas;
 $: sunrise = getForeignTime($current.timezone/60, new Date($current.sys.sunrise*1000))
 $: sunset = getForeignTime($current.timezone/60, new Date($current.sys.sunset*1000))
 $: foreignTime = getForeignTime($current.timezone/60, new Date())
+$: sunriseMins = 60*sunrise.split(':')[0] + +sunrise.split(':')[1]
+$: sunsetMins = 60*sunset.split(':')[0] + +sunset.split(':')[1]
 $: { canvas && plot(foreignTime) }
 
-// NOTIMPLEMENTED:
-// stretch the daylight hours between the width above the horizontal line
-
+// NOTIMPLEMENTED
+// I need to offset the dayNightDividingLine because the sun isn't highest at noon, but that's the highest point in my curve
 
 function plot(time) {
   // initialize and clear canvas
@@ -20,11 +21,16 @@ function plot(time) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // set the look of the main curve
-  const amplitudePerc = .9;
+  const amplitudePerc = .99;
   const percentOfFull = 1;
-  const lineHeight = 3/4*height;
 
   // draw main curve
+  // as x is moving across the canvas, capture the y value where x shifts into daylight
+  const dayLightPercent = (sunsetMins-sunriseMins)/1440;
+  const xValueInPxWhereItBecomesDayLight = width/2 - dayLightPercent*width/2
+
+  let dayNightDividingLine;
+
   ctx.beginPath();
   ctx.lineWidth = 1;
   ctx.strokeStyle = "gray";
@@ -33,9 +39,11 @@ function plot(time) {
   while (x < width) {
     y = height/2 + (amplitudePerc*height/2)*Math.cos(percentOfFull*x*2*Math.PI/500)
     ctx.lineTo(x, y);
+    if (x<xValueInPxWhereItBecomesDayLight) dayNightDividingLine = y;
     x = x + 1;
   }
   ctx.stroke();
+
 
   // determine how much to fill in
   let [hours, minutes] = time.split(':');
@@ -48,12 +56,12 @@ function plot(time) {
     ctx.beginPath();
     ctx.lineWidth = 2;
     y = height/2 + (amplitudePerc*height/2)*Math.cos(percentOfFull*x*2*Math.PI/500)
-    if (y < lineHeight){
+    if (y < dayNightDividingLine){
       ctx.strokeStyle = "yellow";
     } else {
       ctx.strokeStyle = "rgb(0,44,255)";
     }
-    ctx.moveTo(x, lineHeight)
+    ctx.moveTo(x, dayNightDividingLine)
     ctx.lineTo(x, y);
     ctx.stroke();
     x = x + 1;
@@ -66,7 +74,7 @@ function plot(time) {
   ctx.lineWidth = 1;
   ctx.strokeStyle = "gray";
   while (x < width){
-    y = lineHeight;
+    y = dayNightDividingLine;
     ctx.lineTo(x, y);
     x = x + 1;
   }
