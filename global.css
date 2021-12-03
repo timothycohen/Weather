@@ -10,7 +10,6 @@
   font-weight: bold;
 }
 
-/* Set up Roboto for modern browsers, all weights */
 @supports (font-variation-settings: normal) {
   @font-face {
     font-family: 'EBGaramond';
@@ -53,8 +52,6 @@ html, body{
   --color__nightDark: "#371D67";
   --color__nightLabel: "#4b3476";
   }
-
-}
 
 .tooltip{
   height: 6rem;
