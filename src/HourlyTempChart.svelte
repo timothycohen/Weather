@@ -3,33 +3,43 @@
 
   let width = 300;
   let wrapper = 350;
+  let pointSize = 8;
 
   function resize() {
-    width = 300; wrapper = 350;
+    width = 300;
+    wrapper = 350;
+    pointSize = 8;
     if(window.innerWidth > 500 ) {
-      width = 300; wrapper = 350;
+      width = 300;
+      wrapper = 350;
+      pointSize = 9;
     }
     if(window.innerWidth > 576 ) {
-      width = 400; wrapper = 450;
+      width = 400;
+      wrapper = 450;
+      pointSize = 10;
     }
     if(window.innerWidth > 752 ) {
-      width = 500; wrapper = 550;
+      width = 500;
+      wrapper = 550;
+      pointSize = 12;
     }
   }
+
   resize();
   window.onresize = resize;
 
 </script>
 
-<div class="wrapper" style="--wrapper:{wrapper}px; --width:{width}px">
-  <label>Next 24 hours</label>
+<div class="wrapper" style="--wrapper:{wrapper}px; --width:{width}px; --pointSize:{pointSize}px">
+  <div class="title">Next 24 hours</div>
   <figure class="css-chart">
     <ul id="line-chart" class="line-chart">
       {#each $hourly as hour, i}
-      <li style="--x: {6+ (width-12) * (i/23)}px; --y: {3*K(hour.temp)['metric']}px;">
+      <li style="--x: {(pointSize/2)+ (width-pointSize) * (i/23)}px; --y: {3*K(hour.temp)['metric']}px;">
         <div class="data-point" data-value="{5*K(hour.temp)[$unit]}"></div>
       </li>
-      <li style="--x: {6+ (width-12) * (i/23)}px; --y: {3*K(hour.temp)['metric']}px;">
+      <li style="--x: {(pointSize/2)+ (width-pointSize) * (i/23)}px; --y: {3*K(hour.temp)['metric']}px;">
         <div class="label">{K(hour.temp)[$unit]}°</div>
       </li>
   {/each}
@@ -53,7 +63,7 @@
   box-shadow: 0 0 2px 2px var(--color__darkgray);
 }
 
-label{
+.title{
   font-weight: bolder;
 }
 
@@ -78,18 +88,18 @@ label{
   border: 2px solid var(--color__lightblue);
   border-radius: 50%;
   bottom: calc(var(--y) - 8px);
-  height: 12px;
-  left: calc(var(--x) - 6px);
+  height: var(--pointSize);
+  left: calc(var(--x) - var(--pointSize)/2);
   position: absolute;
-  width: 12px;
+  width: var(--pointSize);
   z-index: 1;
 }
 
 .label {
-  font-size: 12px;
+  font-size: var(--pointSize);
   text-align: center;
-  bottom: calc(var(--y) + 4px);
-  left: calc(var(--x) - 6px);
+  bottom: calc(var(--y) - 8px + var(--pointSize));
+  left: calc(var(--x) - var(--pointSize)/2);
   position: absolute;
   z-index: 1;
 }

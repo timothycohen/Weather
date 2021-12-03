@@ -1,5 +1,21 @@
 <script>
 import { current, getForeignTime, colorStore } from './stores';
+import { onMount } from 'svelte';
+
+// font size was causing time to sunrise/set text to wrap on mobile, reducing font size if it's wrapping
+onMount(() => {
+  const p1 = document.querySelector('.sunrise > .timeTo')
+  let p1Height = window.getComputedStyle(p1).height.replace('px', '');
+  const p2 = document.querySelector('.sunset > .timeTo')
+  let p2Height = window.getComputedStyle(p2).height.replace('px', '');
+
+  if (p1Height > 20){
+    document.querySelector('.sunrise > .timeTo > .data').style.fontSize = '.5rem';
+  }
+  if (p2Height > 20){
+    document.querySelector('.sunset > .timeTo > .data').style.fontSize = '.5rem';
+  }
+})
 
 let canvas;
 
@@ -192,6 +208,10 @@ function plot(time) {
 
   .timeTo > .data{
     font-size: .7rem;
+  }
+
+  .timeTo * {
+    height: 1.2rem;
   }
 
   .now{

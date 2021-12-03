@@ -85,6 +85,8 @@
     justify-content: space-around;
     background-color: white;
     border-radius: 4px;
+    max-width: 95%;
+    margin: 0 auto;
     box-shadow: 0 0 2px 2px var(--color__darkgray);
   }
 
@@ -137,13 +139,14 @@
 
   .overview__temperature{
     font-size: 5rem;
-    line-height: 3rem;
+    line-height: 3.5rem;
+    display: flex;
+    align-items: flex-start;
   }
 
   .tempLabel{
-    position: relative;
-    top: -1.2rem;
     font-size: 3rem;
+    line-height: 2.5rem;
   }
 
 /* #################### DETAILS ####################*/
@@ -155,17 +158,17 @@
     grid-column-gap: .5rem;
   }
 
-  [class^="detailContainer--"], [class*=' detailContainer--']{
+  [class^="detailContainer--"]{
     display: flex;
     align-items: flex-end;
   }
 
-  [class^="detailContainer--"] img, [class*=' detailContainer--'] img{
+  [class^="detailContainer--"] img{
     height: 2rem;
     width: 2rem;
   }
 
-  [class^="detailContainer--"] p, [class*=' detailContainer--'] p{
+  [class^="detailContainer--"] p{
   }
 
   /* p[class$="--data"] isn't working... */
