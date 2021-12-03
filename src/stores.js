@@ -4,7 +4,7 @@ import { config } from '../config';
 export const unit = writable( localStorage.getItem('unit') || 'imperial' );
 unit.subscribe((choice) => { localStorage.setItem('unit', choice); });
 
-export const APPID = config.OPEN_WEATHER_API_KEY;
+export const APPID = '77d5ebf5462fcef67f6e8ee55539fe57';
 
 export const colorStore = {
   colorSunLight: "#FFD93A",
