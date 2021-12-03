@@ -5,18 +5,6 @@
   export let main;
   export let description;
   export let icon;
-	import { onMount } from 'svelte';
-
-  let el;
-
-  // if overflow, reduce font size
-  onMount(reduceFontSize)
-
-  function reduceFontSize(){
-    while (el.offsetWidth < el.scrollWidth){
-      el.style.fontSize = window.getComputedStyle(el).fontSize.replace('px', '') - 1 + 'px';
-    }
-  }
 
 </script>
 <div class="dayCard">
@@ -25,7 +13,7 @@
       style="background-image: url('http://openweathermap.org/img/wn/{icon}@2x.png');"
       role="img" aria-label="{main}"
     ></div>
-    <p bind:this={el} class="day__description">{description}</p>
+    <p class="day__description">{description}</p>
     <div class="day__temp">
       <span class="day__temp--max">{max}°↑</span>
       <span class="day__temp--min">{min}°↓</span>
@@ -57,9 +45,7 @@
     line-height: 1.3rem;
     height: 1.3rem;
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1rem;
   }
   .day__temp--min{
     font-size: .8rem;
@@ -73,4 +59,5 @@
     background-position: center center;
     background-repeat: no-repeat;
   }
+
 </style>
