@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store';
-import { config } from '../config';
 
 export const unit = writable( localStorage.getItem('unit') || 'imperial' );
 unit.subscribe((choice) => { localStorage.setItem('unit', choice); });
