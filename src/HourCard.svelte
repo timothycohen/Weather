@@ -38,11 +38,14 @@
     flex-direction: column;
     align-content: center;
     justify-items: flex-start;
+    height: 6.7rem;
+    width: 3.6rem
   }
 
   .center-cropped {
-    width: 76px;
-    height: 56px;
+    background-size: 50px;
+    width: 57px;
+    height: 42px;
     background-position: center center;
     background-repeat: no-repeat;
   }

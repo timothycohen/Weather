@@ -4,7 +4,7 @@
 
 </script>
 
-<div class="dailyList">
+<div class="daily">
   {#each $daily as day}
     <DayCard
       time = {getForeignDate($current.timezone/60, new Date(day.dt*1000))}
@@ -16,9 +16,24 @@
     />
   {/each}
 </div>
-
 <style>
-.dailyList{
 
+.daily{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto 0 auto;
+  width: 300px;
 }
+
+  @media only screen and (min-width: 376px) {
+    .daily{ width: 350px;}
+  }
+
+  @media only screen and (min-width: 752px) {
+    .daily{ width: 730px;}
+  }
+
 </style>

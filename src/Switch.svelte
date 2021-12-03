@@ -1,7 +1,7 @@
 <script>
   import { unit } from './stores';
 
-  let color = "#2196F3";
+  let color = "rgba(0, 0, 0, 0.42)";
 
   let checked = $unit === 'imperial' ? true : false;
   $: $unit = checked === true ? 'imperial' : 'metric';
@@ -20,16 +20,22 @@
   </label>
 
 <style>
+
   .switch {
+    margin-left: 1rem;
     user-select: none;
     position: relative;
     display: inline-block;
     width: 3.5rem;
     height: 2rem;
     cursor: pointer;
-    border: 1px solid var(--color);
     border-radius: 5px;
-    box-shadow: 0 0 1px var(--color);
+    box-shadow: 0 0 2px var(--color);
+    transition: 300ms ease-in-out;
+  }
+
+  .switch:hover{
+    transform: scale(1.1)
   }
 
   /* hidden checkbox */

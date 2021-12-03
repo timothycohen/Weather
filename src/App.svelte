@@ -1,10 +1,10 @@
 <script>
-  import InputForm from "./InputForm.svelte";
-  import Switch from './Switch.svelte'
-  import Current from './Current.svelte'
-  import Time from './Time.svelte'
-  import Hourly from './Hourly.svelte'
-  import Daily from './Daily.svelte'
+  import Header from './Header.svelte';
+  import Current from './Current.svelte';
+  import Sun from './Sun.svelte';
+  import Hourly from './Hourly.svelte';
+  import HourlyTempChart from './HourlyTempChart.svelte';
+  import Daily from './Daily.svelte';
 	import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
@@ -15,41 +15,34 @@
 
 {#if ready}
 <main transition:fade>
-  <div class="header">
-    <InputForm />
-    <Switch />
+  <div class="header"><Header /></div>
+
+  <div class="content">
+    <div class="current"><Current /></div>
+    <div class="daily"><Daily /></div>
+    <Hourly />
+    <HourlyTempChart />
+    <Sun />
   </div>
-  <section class='today'>
-    <Current />
-  </section>
-  <Time />
-  <Hourly />
-  <Daily />
 </main>
 {/if}
 
 <style>
-
-main{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
 .header{
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 1rem;
 }
 
-.today{
+.content{
+  background-image: url(https://images.unsplash.com/photo-1608789433796-73a21e987a66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80);
+  background-size: cover;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.current{
+  max-width: 48rem;
+  margin: 0 auto;
 }
 
 </style>

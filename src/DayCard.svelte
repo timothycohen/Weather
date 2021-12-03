@@ -27,10 +27,13 @@
     text-align: center;
   }
   .dayCard{
-    border: 1px solid black;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 2px var(--color__darkgray);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 6.5rem;
   }
   .day__time{
     font-weight: bolder;

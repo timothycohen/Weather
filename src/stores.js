@@ -6,6 +6,19 @@ unit.subscribe((choice) => { localStorage.setItem('unit', choice); });
 
 export const APPID = config.OPEN_WEATHER_API_KEY;
 
+export const colorStore = {
+  colorSunLight: "#FFD93A",
+  colorSunDark: "#E6B528",
+  colorSunLabel: "#a17f1c",
+  colorNightLight: "#48287D",
+  colorNightDark: "#371D67",
+  colorNightLabel: "#4b3476",
+
+  colorAccent: "#6200ee",
+  colorDarkgray: "rgba(0, 0, 0, 0.42)",
+  colorHeader: "black",
+}
+
 export const K = degK => {
   // celsius
   const metric = (() => Math.round(degK - 273.15))()
