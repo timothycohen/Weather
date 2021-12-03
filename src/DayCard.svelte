@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 6.6rem;
+    width: 7rem;
     height: 8rem;
   }
   .day__time{

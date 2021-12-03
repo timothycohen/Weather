@@ -28,12 +28,12 @@
   width: 300px;
 }
 
-  @media only screen and (min-width: 376px) {
-    .daily{ width: 350px;}
+  @media only screen and (min-width: 400px) {
+    .daily{ width: 390px;}
   }
 
-  @media only screen and (min-width: 752px) {
-    .daily{ width: 730px;}
+  @media only screen and (min-width: 800px) {
+    .daily{ width: 780px;}
   }
 
 </style>
