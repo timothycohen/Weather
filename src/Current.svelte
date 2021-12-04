@@ -130,7 +130,7 @@
     align-items: flex-end;
     width: 100%;
     justify-content: space-around;
-    font-size: .9rem;
+    font-size: .75rem;
   }
 
   .head--high{
@@ -166,9 +166,6 @@
   [class^="detailContainer--"] img{
     height: 2rem;
     width: 2rem;
-  }
-
-  [class^="detailContainer--"] p{
   }
 
   /* p[class$="--data"] isn't working... */

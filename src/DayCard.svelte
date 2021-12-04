@@ -34,7 +34,6 @@
     flex-direction: column;
     align-items: center;
     width: 7rem;
-    height: 8rem;
   }
   .day__time{
     font-weight: bolder;
@@ -42,10 +41,8 @@
     flex-grow: 1;
   }
   .day__description{
-    line-height: 1.3rem;
-    height: 1.3rem;
     width: 100%;
-    font-size: 1rem;
+    font-size: .8rem;
   }
   .day__temp--min{
     font-size: .8rem;
