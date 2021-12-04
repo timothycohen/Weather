@@ -1,20 +1,20 @@
 @font-face {
   font-family: 'EBGaramond';
-  src: url('/fonts/garamond/EBGaramond-Regular.ttf');
+  src: url('./fonts./garamond/EBGaramond-Regular.ttf');
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'EBGaramond';
-  src: url('/fonts/garamond/EBGaramond-Bold.ttf');
+  src: url('./fonts/garamond/EBGaramond-Bold.ttf');
   font-weight: bold;
 }
 
 @supports (font-variation-settings: normal) {
   @font-face {
     font-family: 'EBGaramond';
-    src: url('/fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf supports variations'),
-    url('/fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf-variations');
+    src: url('./fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf supports variations'),
+    url('./fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf-variations');
     font-weight: 100 1000;
   }
   .super-bold {
