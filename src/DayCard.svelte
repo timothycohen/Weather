@@ -5,28 +5,30 @@
   export let main;
   export let description;
   export let icon;
-
 </script>
+
 <div class="dayCard">
   <p class="day__time">{time}</p>
-    <div class="center-cropped"
-      style="background-image: url('http://openweathermap.org/img/wn/{icon}@2x.png');"
-      role="img" aria-label="{main}"
-    ></div>
-    <p class="day__description">{description}</p>
-    <div class="day__temp">
-      <span class="day__temp--max">{max}°↑</span>
-      <span class="day__temp--min">{min}°↓</span>
-    </div>
+  <div
+    class="center-cropped"
+    style="background-image: url('http://openweathermap.org/img/wn/{icon}@2x.png');"
+    role="img"
+    aria-label={main}
+  />
+  <p class="day__description">{description}</p>
+  <div class="day__temp">
+    <span class="day__temp--max">{max}°↑</span>
+    <span class="day__temp--min">{min}°↓</span>
+  </div>
 </div>
 
 <style>
-  *{
+  * {
     margin: 0;
     padding: 0;
     text-align: center;
   }
-  .dayCard{
+  .dayCard {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0 0 2px 2px var(--color__darkgray);
@@ -35,19 +37,19 @@
     align-items: center;
     width: 7rem;
   }
-  .day__time{
+  .day__time {
     font-weight: bolder;
     font-size: 1rem;
     flex-grow: 1;
   }
-  .day__description{
+  .day__description {
     width: 100%;
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
-  .day__temp--min{
-    font-size: .8rem;
+  .day__temp--min {
+    font-size: 0.8rem;
   }
-  .day__temp--max{
+  .day__temp--max {
     font-size: 1.1rem;
   }
   .center-cropped {
@@ -56,5 +58,4 @@
     background-position: center center;
     background-repeat: no-repeat;
   }
-
 </style>

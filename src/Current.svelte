@@ -1,39 +1,35 @@
 <script>
-  import { current, K, unit, metersPerSec} from './stores';
+  import { current, K, unit, metersPerSec } from './stores';
 
-  $: temp = K($current.main.temp)[$unit]
-  $: feelsLike = K($current.main.feels_like)[$unit]
-  $: low = K($current.main.temp_min)[$unit]
-  $: high = K($current.main.temp_max)[$unit]
-  $: humidity = $current.main.humidity
-  $: description = $current.weather[0].description
-  $: main = $current.weather[0].main
-  $: clouds = $current.clouds.all
-  $: windspeed = metersPerSec($current.wind.speed)[$unit]
-  $: icon = $current.weather[0].icon
+  $: temp = K($current.main.temp)[$unit];
+  $: feelsLike = K($current.main.feels_like)[$unit];
+  $: low = K($current.main.temp_min)[$unit];
+  $: high = K($current.main.temp_max)[$unit];
+  $: humidity = $current.main.humidity;
+  $: description = $current.weather[0].description;
+  $: main = $current.weather[0].main;
+  $: clouds = $current.clouds.all;
+  $: windspeed = metersPerSec($current.wind.speed)[$unit];
+  $: icon = $current.weather[0].icon;
   $: tempLabel = $unit === 'imperial' ? 'F' : 'C';
   $: speedLabel = $unit === 'imperial' ? 'mph' : 'kph';
-
-
 </script>
 
 <div class="current">
-
-  <div class='current__visual'>
-    <img class="visual--image" src="http://openweathermap.org/img/wn/{icon}@2x.png" alt={main}>
+  <div class="current__visual">
+    <img class="visual--image" src="http://openweathermap.org/img/wn/{icon}@2x.png" alt={main} />
     <div class="visual--description">{description}</div>
   </div>
 
   <div class="current__overview">
     <div class="overview__head">
-      <div class="head--high">high {high}°	↑</div>
+      <div class="head--high">high {high}° ↑</div>
       <div class="head--low">low {low}° ↓</div>
     </div>
     <div class="overview__temperature">{temp}°<span class="tempLabel">{tempLabel}</span></div>
   </div>
 
   <div class="current__details">
-
     <div class="detailContainer--temp">
       <img src="icons/icons8-thermometer-50.png" alt="thermometer icon" />
       <div>
@@ -66,19 +62,15 @@
       </div>
     </div>
   </div>
-
 </div>
 
-
-
 <style>
-
-  *{
+  * {
     margin: 0;
     padding: 0;
   }
 
-  .current{
+  .current {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -90,24 +82,24 @@
     box-shadow: 0 0 2px 2px var(--color__darkgray);
   }
 
-  .current > div{
+  .current > div {
     margin: 1rem 0;
   }
 
-/* #################### VISUAL ####################*/
-  .current__visual{
+  /* #################### VISUAL ####################*/
+  .current__visual {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .visual--image{
+  .visual--image {
     object-fit: none;
     width: 75px;
     height: 60px;
   }
 
-  .visual--description{
+  .visual--description {
     font-weight: bolder;
     font-size: 2rem;
     line-height: 1.5rem;
@@ -115,55 +107,55 @@
     width: 12.5rem;
   }
 
-/* #################### OVERVIEW ####################*/
+  /* #################### OVERVIEW ####################*/
 
-  .current__overview{
+  .current__overview {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: center;
     width: 9rem;
-}
+  }
 
-  .overview__head{
+  .overview__head {
     display: flex;
     align-items: flex-end;
     width: 100%;
     justify-content: space-around;
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 
-  .head--high{
+  .head--high {
     font-size: larger;
   }
 
-  .overview__temperature{
+  .overview__temperature {
     font-size: 5rem;
     line-height: 3.5rem;
     display: flex;
     align-items: flex-start;
   }
 
-  .tempLabel{
+  .tempLabel {
     font-size: 3rem;
     line-height: 2.5rem;
   }
 
-/* #################### DETAILS ####################*/
-  .current__details{
+  /* #################### DETAILS ####################*/
+  .current__details {
     display: grid;
     grid-template-columns: 6.5rem 6.5rem;
     grid-template-rows: 2.5rem 2.5rem;
-    grid-row-gap: .5rem;
-    grid-column-gap: .5rem;
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.5rem;
   }
 
-  [class^="detailContainer--"]{
+  [class^='detailContainer--'] {
     display: flex;
     align-items: flex-end;
   }
 
-  [class^="detailContainer--"] img{
+  [class^='detailContainer--'] img {
     height: 2rem;
     width: 2rem;
   }
@@ -172,10 +164,9 @@
   .overview__humidity--data,
   .overview__feelsLike--data,
   .overview__windspeed--data,
-  .overview__clouds--data{
+  .overview__clouds--data {
     font-weight: bolder;
     font-size: 1.5rem;
     line-height: 1rem;
   }
-
 </style>
