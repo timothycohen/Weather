@@ -14,7 +14,7 @@
   @font-face {
     font-family: 'EBGaramond';
     src: url('./fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf supports variations'),
-    url('./fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf-variations');
+      url('./fonts/garamond/EBGaramond-VariableFont_wght.ttf') format('ttf-variations');
     font-weight: 100 1000;
   }
   .super-bold {
@@ -29,12 +29,17 @@ html {
   min-height: 100vh;
 }
 
-html, body{
+body {
+  background-image: url('https://images.unsplash.com/photo-1608789433796-73a21e987a66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80');
+  background-size: stretch;
+  height: 100%;
   margin: 0;
-  padding: 0;
+  padding-bottom: 1rem;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -45,15 +50,15 @@ html, body{
   --color__darkgray: rgba(0, 0, 0, 0.42);
   --color__header: black;
 
-  --color__sunLight: "#FFD93A";
-  --color__sunDark: "#E6B528";
-  --color__sunLabel: "#a17f1c";
-  --color__nightLight: "#48287D";
-  --color__nightDark: "#371D67";
-  --color__nightLabel: "#4b3476";
-  }
+  --color__sunLight: '#FFD93A';
+  --color__sunDark: '#E6B528';
+  --color__sunLabel: '#a17f1c';
+  --color__nightLight: '#48287D';
+  --color__nightDark: '#371D67';
+  --color__nightLabel: '#4b3476';
+}
 
-.tooltip{
+.tooltip {
   height: 6rem;
   width: 6rem;
 }
@@ -64,7 +69,7 @@ html, body{
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  padding: .25rem;
+  padding: 0.25rem;
   position: relative;
   top: -5rem;
   left: -4.6rem;
